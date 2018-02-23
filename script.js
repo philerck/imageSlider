@@ -4,7 +4,8 @@ const slide = {
   left: document.querySelector('.left'),
   right: document.querySelector('.right'),
   item: 0,
-  width: 720,
+  width: document.querySelector('.slider ul'),
+  transform: 0,
   setActive() {
     this.slideListItem[0].classList.add('active');
   },
@@ -21,8 +22,9 @@ const slide = {
   },
   transition() {
     let id = this.getElementId();
+    console.log(this.width.offsetWidth);
     if (id != this.slideList.childElementCount) {
-      this.slideList.style.transform = 'translateX(-' + id * this.width + 'px)';
+      this.slideList.style.transform = 'translateX(-' + this.transform + this.width.offsetWidth + 'px)';
       this.slideList.classList.add('slide');
     } else {
       this.slideList.style.transform = 'translateX(0px)';
