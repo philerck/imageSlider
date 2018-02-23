@@ -44,6 +44,9 @@ const slide = {
     this.setDataItem();
   },
   click() {
+    //console.log(el);
+    //let symbol;
+    //el.target.classList.contains('left') ? symbol = '' : symbol = '-';
     this.transition();
     this.getActive();
   }
@@ -52,6 +55,7 @@ const slide = {
 slide.start();
 
 slide.right.addEventListener('click', () => slide.click());
+slide.left.addEventListener('click', () => slide.click());
 
 
 
