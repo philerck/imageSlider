@@ -20,11 +20,17 @@ const slide = {
     let itemId = itemClass.getAttribute('data-item');
     return parseInt(itemId);
   },
-  transition() {
+  dir(direction, transform, width) {
+    console.log(transform);
+    console.log(width);
+    return direction === 'left' ? transform - width : transform + width;
+  },
+  transition(direction) {
     let id = this.getElementId();
-    console.log(this.width.offsetWidth);
+    let wert = this.dir(direction, this.transform, this.width.offsetWidth);
+    console.log(wert);
     if (id != this.slideList.childElementCount) {
-      this.slideList.style.transform = 'translateX(-' + this.transform + this.width.offsetWidth + 'px)';
+      this.slideList.style.transform = 'translateX(-' + wert + 'px)';
       this.slideList.classList.add('slide');
     } else {
       this.slideList.style.transform = 'translateX(0px)';
@@ -45,19 +51,18 @@ const slide = {
     this.setActive();
     this.setDataItem();
   },
-  click() {
-    //console.log(el);
-    //let symbol;
-    //el.target.classList.contains('left') ? symbol = '' : symbol = '-';
-    this.transition();
+  click(el) {
+    let direction;
+    el.target.classList.contains('left') ? direction = 'left' : direction = 'right';
+    this.transition(direction);
     this.getActive();
   }
 };
 
 slide.start();
 
-slide.right.addEventListener('click', () => slide.click());
-slide.left.addEventListener('click', () => slide.click());
+slide.right.addEventListener('click', (el) => slide.click(el));
+slide.left.addEventListener('click', (el) => slide.click(el));
 
 
 
