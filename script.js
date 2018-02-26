@@ -14,6 +14,7 @@ const slide = {
     }
     this.slideList.style.transform = 'translateX(' + this.transform + '%)';
     this.slideList.classList.add('slide');
+
   },
   click(el) {
     this.transition(el);
