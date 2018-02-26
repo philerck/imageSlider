@@ -19,8 +19,7 @@ main {
 
   &__wrapper {
     overflow: hidden;
-    max-width: 720px;
-    max-height: 350px;
+    max-height: max-content;
   }
 
   ul {

@@ -3,6 +3,7 @@ const slide = {
   slideListItem: document.querySelectorAll('.slider ul li'),
   width: document.querySelector('.slider ul'),
   arrow: document.querySelectorAll('.arrow'),
+  maxWidth: 720,
   transform: 0,
   transition(el) {
     let move = 100;
@@ -20,6 +21,8 @@ const slide = {
     this.transition(el);
   },
   start() {
+    let wrapper = document.querySelector('.slider__wrapper');
+    wrapper.style.maxWidth = this.maxWidth + 'px';
     slide.arrow.forEach(function (el) {
       el.addEventListener('click', (el) => slide.click(el));
     });
