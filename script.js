@@ -23,7 +23,7 @@ const slide = {
   start() {
     let wrapper = document.querySelector('.slider__wrapper');
     wrapper.style.maxWidth = this.maxWidth + 'px';
-    this.slideList.style.transition = "transform 1s ease-in";
+    this.slideList.style.transition = 'transform 1s ease-in';
     slide.arrow.forEach(function (el) {
       el.addEventListener('click', (el) => slide.click(el));
     });
