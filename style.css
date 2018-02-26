@@ -14,23 +14,31 @@ main {
 }
 
 .slider {
-  position: relative;
   display: flex;
   align-items: center;
 }
 
 .slider__wrapper {
   overflow: hidden;
+  max-width: 720px;
+  max-height: 350px;
 }
 
 .slider ul {
   display: flex;
-  width: 720px;
-  height: 350px;
+  
 }
 
 .slider ul li {
   list-style-type: none;
+  flex-basis: 100%;
+  flex-shrink: 0;
+  flex-grow: 1;
+}
+
+.slider ul li img {
+  max-width: 100%;
+  height: auto;
 }
 
 .slide {
@@ -46,3 +54,4 @@ main {
   cursor: pointer;
   transform: scale(1.1);
 }
+
