@@ -5,16 +5,14 @@ const slide = {
   arrow: document.querySelectorAll('.arrow'),
   transform: 0,
   transition(el) {
+    let move = 100;
 
+    el.target.classList.contains('left') ? this.transform += move : this.transform -= move;
 
-    el.target.classList.contains('left') ? this.transform += this.width.offsetWidth : this.transform -= this.width.offsetWidth;
-
-    console.log((this.slideList.childElementCount * this.width.offsetWidth) - this.width.offsetWidth);
-
-    if (this.transform > 0 || this.transform === ((this.slideList.childElementCount * this.width.offsetWidth) * -1)) {
+    if (this.transform > 0 || this.transform === ((this.slideList.childElementCount * 100)) * -1) {
       this.transform = 0;
     }
-    this.slideList.style.transform = 'translateX(' + this.transform + 'px)';
+    this.slideList.style.transform = 'translateX(' + this.transform + '%)';
     this.slideList.classList.add('slide');
   },
   click(el) {
