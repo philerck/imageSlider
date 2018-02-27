@@ -17,33 +17,37 @@
 
 <body>
   <main>
-    <section class="slider">
-      <img class="arrow left" src="img/arrow-left.svg">
-      <div class="slider__wrapper">
-        <ul>
-          <li>
-            <img src="img/img1.jpg">
-          </li>
-          <li>
-            <img src="img/img2.jpg">
-          </li>
-          <li>
-            <img src="img/img3.jpg">
-            <p>Das ist ein Testsatz</p>
-          </li>
-          <li>
-            <img src="img/img4.jpg">
-          </li>
-          <li>
-            <img src="img/img5.jpg">
-          </li>
-          <li>
-            <img src="img/img6.jpg">
-          </li>
-        </ul>
-      </div>
-      <img class="arrow right" src="img/arrow-right.svg">
-    </section>
+    <div class="slider">
+      <ul>
+        <li>
+          <img src="img/img1.jpg">
+        </li>
+        <li>
+          <img src="img/img2.jpg">
+        </li>
+        <li>
+          <img src="img/img3.jpg">
+        </li>
+        <li>
+          <img src="img/img4.jpg">
+        </li>
+        <li>
+          <img src="img/img5.jpg">
+        </li>
+        <li>
+          <img src="img/img6.jpg">
+        </li>
+      </ul>
+      <!--<img class="arrow left" src="img/arrow-left.svg" alt="Arrow Left" />-->
+      <svg viewbox="0 0 50 50" class="arrow left">
+        <ellipse cx="25" cy="25" rx="20" ry="20"></ellipse>
+        <polyline points="30 15 20 25 30 35"></polyline>
+      </svg>
+      <svg viewbox="0 0 50 50" class="arrow right">
+        <ellipse cx="25" cy="25" rx="20" ry="20"></ellipse>
+        <polyline points="20 15 30 25 20 35"></polyline>
+      </svg>
+    </div>
   </main>
 
   <script src="script.js"></script>

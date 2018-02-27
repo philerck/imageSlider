@@ -14,13 +14,9 @@ main {
 }
 
 .slider {
-  display: flex;
-  align-items: center;
-
-  &__wrapper {
-    overflow: hidden;
-    max-height: max-content;
-  }
+  overflow: hidden;
+  max-height: max-content;
+  position: relative;
 
   ul {
     display: flex;
@@ -44,7 +40,30 @@ main {
 
     &:hover {
       cursor: pointer;
-      transform: scale(1.1);
+    }
+  }
+
+  .left {
+    position: absolute;
+    bottom: 50%;
+    left: 2%;
+    transform: translateY(50%);
+  }
+
+  .right {
+    position: absolute;
+    bottom: 50%;
+    right: 2%;
+    transform: translateY(50%);
+  }
+
+  svg {
+    stroke: white;
+    stroke-width: 2px;
+    fill:transparent;
+
+    polyline {
+      stroke-width: 4px;
     }
   }
 }
