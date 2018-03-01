@@ -18,8 +18,9 @@ const slide = {
 
   },
   setNewElementActive(index, direction) {
-    console.log(direction);
-    if (direction < 0) {
+    console.log(index);
+    if (direction === 'right') {
+      console.log(this.slideListItem[index]);
       this.slideListItem[index - 1].classList.remove('active');
       this.slideListItem[index].classList.add('active');
     } else {
@@ -28,15 +29,17 @@ const slide = {
     }
   },
   move(direction) {
-    let index = this.getActiveID();
+    let index = this.getActiveID(direction);
     this.setNewElementActive(index, direction);
     let transformInProzent = index * direction;
     this.slideList.style.transform = 'translateX(' + transformInProzent + '%)';
   },
-  getActiveID() {
+  getActiveID(direction) {
     let activeElement = document.querySelector('.slider ul li.active');
     activeElement = activeElement.getAttribute('id').split('_');
     let activeElementIndex = activeElement[1];
+    console.log(direction);
+    direction === 'left' ? activeElementIndex -= 1 : activeElementIndex;
     return activeElementIndex;
   },
   allElementsGetItemClass() {
@@ -62,10 +65,10 @@ const slide = {
     this.slideList.style.transition = 'transform 1s ease-in';
 
     let leftBtn = document.querySelector('img.left');
-    leftBtn.addEventListener('click', () => this.move(100));
+    leftBtn.addEventListener('click', () => this.move('left'));
 
     let rightBtn = document.querySelector('img.right');
-    rightBtn.addEventListener('click', () => this.move(-100));
+    rightBtn.addEventListener('click', () => this.move('right'));
   }
 };
 
