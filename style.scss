@@ -57,13 +57,29 @@ main {
     transform: translateY(50%);
   }
 
-  svg {
+  .arrow {
     stroke: white;
     stroke-width: 2px;
     fill:transparent;
 
     polyline {
       stroke-width: 4px;
+    }
+  }
+
+  .bulletsForImages {
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+    transform: translateX(-50%);
+
+    &__bullet {
+      width: 16px;
+      fill: white;
+      fill-opacity: .6;
     }
   }
 }
