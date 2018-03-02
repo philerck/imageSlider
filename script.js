@@ -1,75 +1,43 @@
 const slide = {
-  slideList: document.querySelector('.slider ul'),
-  slideListItem: document.querySelectorAll('.slider ul li'),
-  bullets: document.querySelectorAll('.bulletsForImages__bullet'),
-  width: document.querySelector('.slider ul'),
-  maxWidth: 650,
+  active: 0,
   transform: 0,
-  transition(el) {
-    let move = 100;
+  maxWidth: 720,
+  sliderUl: document.querySelector('.slider ul'),
+  bullets: document.querySelectorAll('.bullets__item'),
 
-    el.target.classList.contains('left') || el.target.parentElement.classList.contains('left') ? this.transform += move : this.transform -= move;
-
-    if (this.transform > 0 || this.transform === ((this.slideList.childElementCount * 100)) * -1) {
-      this.transform = 0;
-    }
-    this.slideList.style.transform = 'translateX(' + this.transform + '%)';
-    //this.slideList.classList.add('slide');
-
-  },
-  setNewElementActive(index, direction) {
-    console.log(index);
-    if (direction === 'right') {
-      console.log(this.slideListItem[index]);
-      this.slideListItem[index - 1].classList.remove('active');
-      this.slideListItem[index].classList.add('active');
-    } else {
-      this.slideListItem[index - 1].classList.remove('active');
-      this.slideListItem[index - 2].classList.add('active');
-    }
-  },
   move(direction) {
-    let index = this.getActiveID(direction);
-    this.setNewElementActive(index, direction);
-    let transformInProzent = index * direction;
-    this.slideList.style.transform = 'translateX(' + transformInProzent + '%)';
+    this.bullets[this.active].style.fillOpacity = 0.6;
+    if (direction === 'left' && this.transform != 0) {
+      this.transform += 100;
+      this.active -= 1;
+    } else if (direction === 'right' && this.transform != -500) {
+      this.transform -= 100;
+      this.active += 1;
+    }
+
+    this.sliderUl.style.transform = 'translateX(' + this.transform + '%)';
+    this.bullets[this.active].style.fillOpacity = 1;
   },
-  getActiveID(direction) {
-    let activeElement = document.querySelector('.slider ul li.active');
-    activeElement = activeElement.getAttribute('id').split('_');
-    let activeElementIndex = activeElement[1];
-    console.log(direction);
-    direction === 'left' ? activeElementIndex -= 1 : activeElementIndex;
-    return activeElementIndex;
-  },
-  allElementsGetItemClass() {
-    let itemNumber = 1;
-    this.slideListItem.forEach(el => {
-      el.id = 'item_' + itemNumber;
-      itemNumber += 1;
-    });
-    let bulletNumber = 1;
-    this.bullets.forEach(el => {
-      el.id = 'bullet_' + bulletNumber;
-      bulletNumber += 1;
-    });
-  },
+
+
   start() {
-    this.allElementsGetItemClass();
+    let btn__left, btn__right, slider;
+    btn__left = document.querySelector('.btn__left');
+    btn__right = document.querySelector('.btn__right');
 
-    let firstLiElement = this.slideList.querySelector('li:first-child');
-    firstLiElement.classList.add('active');
+    btn__left.addEventListener('click', () => this.move('left'));
+    btn__right.addEventListener('click', () => this.move('right'));
 
-    let wrapper = document.querySelector('.slider');
-    wrapper.style.maxWidth = this.maxWidth + 'px';
-    this.slideList.style.transition = 'transform 1s ease-in';
+    slider = document.querySelector('.slider');
+    slider.style.maxWidth = this.maxWidth + 'px';
 
-    let leftBtn = document.querySelector('img.left');
-    leftBtn.addEventListener('click', () => this.move('left'));
+    this.sliderUl.style.transition = 'transform 1s ease-in';
 
-    let rightBtn = document.querySelector('img.right');
-    rightBtn.addEventListener('click', () => this.move('right'));
+    this.bullets[this.active].style.fillOpacity = 1;
+
   }
+
+
 };
 
 slide.start();

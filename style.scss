@@ -34,7 +34,7 @@ main {
     }
   }
 
-  .left, .right {
+  .btn__left, .btn__right {
     width: 50px;
     height: 50px;
 
@@ -43,14 +43,14 @@ main {
     }
   }
 
-  .left {
+  .btn__left {
     position: absolute;
     bottom: 50%;
     left: 2%;
     transform: translateY(50%);
   }
 
-  .right {
+  .btn__right {
     position: absolute;
     bottom: 50%;
     right: 2%;
@@ -67,7 +67,7 @@ main {
     }
   }
 
-  .bulletsForImages {
+  .bullets {
     display: flex;
     justify-content: space-between;
     width: 30%;
@@ -76,7 +76,7 @@ main {
     bottom: 5%;
     transform: translateX(-50%);
 
-    &__bullet {
+    &__item {
       width: 16px;
       fill: white;
       fill-opacity: .6;
