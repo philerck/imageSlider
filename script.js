@@ -3,10 +3,12 @@ const slide = {
   transform: 0,
   maxWidth: 720,
   sliderUl: document.querySelector('.slider ul'),
-  bullets: document.querySelectorAll('.bullets__item'),
+  countImages: document.querySelector('.slider ul').childElementCount,
 
   move(direction) {
-    this.bullets[this.active].style.fillOpacity = 0.6;
+    let allBullets = document.querySelectorAll('.bullets__item');
+
+    allBullets[this.active].style.fillOpacity = 0.6;
     if (direction === 'left' && this.transform != 0) {
       this.transform += 100;
       this.active -= 1;
@@ -16,14 +18,26 @@ const slide = {
     }
 
     this.sliderUl.style.transform = 'translateX(' + this.transform + '%)';
-    this.bullets[this.active].style.fillOpacity = 1;
+    allBullets[this.active].style.fillOpacity = 1;
   },
 
+  addBullets() {
+    let allBullets = document.querySelector('.bullets');
+
+    for (let i = 0; i < this.countImages; i++) {
+      let bulletItem = document.createElement('div');
+      bulletItem.classList.add('bullets__item');
+      bulletItem.innerHTML = ' <svg viewbox="0 0 200 200" class="slider__circle"><circle cx="100" cy="100" r="90" /></svg>';
+      allBullets.appendChild(bulletItem);
+    }
+  },
 
   start() {
     let btn__left, btn__right, slider;
     btn__left = document.querySelector('.btn__left');
     btn__right = document.querySelector('.btn__right');
+
+    this.addBullets();
 
     btn__left.addEventListener('click', () => this.move('left'));
     btn__right.addEventListener('click', () => this.move('right'));
@@ -33,7 +47,10 @@ const slide = {
 
     this.sliderUl.style.transition = 'transform 1s ease-in';
 
-    this.bullets[this.active].style.fillOpacity = 1;
+
+    let bullets = document.querySelectorAll('.bullets__item');
+    bullets[this.active].style.fillOpacity = 1;
+
 
   }
 
