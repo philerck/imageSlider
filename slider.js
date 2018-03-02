@@ -8,7 +8,7 @@ const slide = {
   move(direction) {
     let allBullets = document.querySelectorAll('.bullets__item');
 
-    allBullets[this.active].style.fillOpacity = 0.6;
+    allBullets[this.active].classList.remove('active');
 
     if (direction === 'left' && this.transform != 0) {
       this.transform += 100;
@@ -20,7 +20,7 @@ const slide = {
 
     this.sliderUl.style.transform = 'translateX(' + this.transform + '%)';
 
-    allBullets[this.active].style.fillOpacity = 1;
+    allBullets[this.active].classList.add('active');
 
   },
 
@@ -60,7 +60,7 @@ const slide = {
 
 
     let bullets = document.querySelectorAll('.bullets__item');
-    bullets[this.active].style.fillOpacity = 1;
+    bullets[this.active].classList.add('active');
   }
 
 

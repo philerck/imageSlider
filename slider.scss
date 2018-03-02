@@ -74,6 +74,11 @@ main {
       width: 16px;
       fill: white;
       fill-opacity: .6;
+
+      &.active {
+        fill: var(--red);
+        fill-opacity: 1;
+      }
     }
   }
 }
