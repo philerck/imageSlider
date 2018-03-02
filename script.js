@@ -7,6 +7,7 @@ const slide = {
 
   move(direction) {
     let allBullets = document.querySelectorAll('.bullets__item');
+
     allBullets[this.active].style.fillOpacity = 0.6;
 
     if (direction === 'left' && this.transform != 0) {
@@ -19,10 +20,7 @@ const slide = {
 
     this.sliderUl.style.transform = 'translateX(' + this.transform + '%)';
 
-    let active = this.active;
-    window.setTimeout(function () {
-      allBullets[active].style.fillOpacity = 1;
-    }, 1000);
+    allBullets[this.active].style.fillOpacity = 1;
 
   },
 
