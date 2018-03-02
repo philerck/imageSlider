@@ -40,6 +40,7 @@ main {
 
     &:hover {
       cursor: pointer;
+      transform: translateY(50%) scale(1.1);
     }
   }
 
@@ -54,17 +55,7 @@ main {
     position: absolute;
     bottom: 50%;
     right: 2%;
-    transform: translateY(50%) rotate(180deg);
-  }
-
-  .arrow {
-    stroke: white;
-    stroke-width: 2px;
-    fill:transparent;
-
-    polyline {
-      stroke-width: 4px;
-    }
+    transform: translateY(50%);
   }
 
   .bullets {

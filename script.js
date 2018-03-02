@@ -19,7 +19,11 @@ const slide = {
 
     this.sliderUl.style.transform = 'translateX(' + this.transform + '%)';
 
-    allBullets[this.active].style.fillOpacity = 1;
+    let active = this.active;
+    window.setTimeout(function () {
+      allBullets[active].style.fillOpacity = 1;
+    }, 1000);
+
   },
 
   addBullets() {
