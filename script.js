@@ -7,8 +7,8 @@ const slide = {
 
   move(direction) {
     let allBullets = document.querySelectorAll('.bullets__item');
-
     allBullets[this.active].style.fillOpacity = 0.6;
+
     if (direction === 'left' && this.transform != 0) {
       this.transform += 100;
       this.active -= 1;
@@ -18,16 +18,25 @@ const slide = {
     }
 
     this.sliderUl.style.transform = 'translateX(' + this.transform + '%)';
+
     allBullets[this.active].style.fillOpacity = 1;
   },
 
   addBullets() {
+    let bullet = document.createElement('div');
+    bullet.classList.add('bullets');
+    document.querySelector('.slider').appendChild(bullet);
+
     let allBullets = document.querySelector('.bullets');
 
     for (let i = 0; i < this.countImages; i++) {
       let bulletItem = document.createElement('div');
+
       bulletItem.classList.add('bullets__item');
+      bulletItem.id = i;
+
       bulletItem.innerHTML = ' <svg viewbox="0 0 200 200" class="slider__circle"><circle cx="100" cy="100" r="90" /></svg>';
+
       allBullets.appendChild(bulletItem);
     }
   },
@@ -50,8 +59,6 @@ const slide = {
 
     let bullets = document.querySelectorAll('.bullets__item');
     bullets[this.active].style.fillOpacity = 1;
-
-
   }
 
 

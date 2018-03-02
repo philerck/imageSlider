@@ -54,7 +54,7 @@ main {
     position: absolute;
     bottom: 50%;
     right: 2%;
-    transform: translateY(50%);
+    transform: translateY(50%) rotate(180deg);
   }
 
   .arrow {
