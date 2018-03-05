@@ -6,6 +6,7 @@ const slide = {
   countImages: document.querySelector('.slider ul').childElementCount,
 
   move(direction) {
+    let slideEnd = (((this.countImages * 100) - 100) * -1);
     let allBullets = document.querySelectorAll('.bullets__item');
 
     allBullets[this.active].classList.remove('active');
@@ -13,10 +14,10 @@ const slide = {
     if (direction === 'left' && this.transform != 0) {
       this.transform += 100;
       this.active -= 1;
-    } else if (direction === 'right' && this.transform != -500) {
+    } else if (direction === 'right' && this.transform != slideEnd) {
       this.transform -= 100;
       this.active += 1;
-    } else if (direction === 'right' && this.transform == -500) {
+    } else if (direction === 'right' && this.transform == slideEnd) {
       this.transform = 0;
       this.active = 0;
     }

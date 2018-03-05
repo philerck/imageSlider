@@ -29,6 +29,7 @@
     stroke: #ffff;
     stroke-width: 2;
     fill: none;
+    filter: drop-shadow(0 0 5px black);
 
     &:hover {
       cursor: pointer;
