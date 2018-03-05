@@ -65,11 +65,37 @@ const slide = {
     });
   },
 
-  bulletClick() {
+  addArrows() {
+    let container = document.querySelector('.slider');
+    let svg_left = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg_left.setAttribute('class', 'btn btn__left');
+    svg_left.setAttribute('version', '1.1');
+    svg_left.setAttribute('viewBox', '0 0 50 50');
 
+    let polyline_left = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+    polyline_left.setAttribute('points', '20,2 2,24 20,48');
+
+    svg_left.appendChild(polyline_left);
+
+    let svg_right = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg_right.setAttribute('class', 'btn btn__right');
+    svg_right.setAttribute('version', '1.1');
+    svg_right.setAttribute('viewBox', '0 0 50 50');
+
+    let polyline_right = document.createElementNS('http://www.w3.org/2000/svg', 'polyline');
+    polyline_right.setAttribute('points', '30,2 48,24 30,48');
+
+    svg_left.appendChild(polyline_left);
+    container.appendChild(svg_left);
+
+    svg_right.appendChild(polyline_right);
+    container.appendChild(svg_right);
   },
 
   start() {
+
+    this.addArrows();
+
     let btn__left, btn__right, slider;
     btn__left = document.querySelector('.btn__left');
     btn__right = document.querySelector('.btn__right');
