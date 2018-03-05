@@ -16,11 +16,28 @@ const slide = {
     } else if (direction === 'right' && this.transform != -500) {
       this.transform -= 100;
       this.active += 1;
+    } else if (direction === 'right' && this.transform == -500) {
+      this.transform = 0;
+      this.active = 0;
     }
 
     this.sliderUl.style.transform = 'translateX(' + this.transform + '%)';
 
     allBullets[this.active].classList.add('active');
+
+  },
+  moveBullets(el) {
+    let id = parseInt(el.currentTarget.id);
+
+    let allBullets = document.querySelectorAll('.bullets__item');
+    allBullets[this.active].classList.remove('active');
+
+    this.transform = -100 * id;
+    this.active = id;
+
+    this.sliderUl.style.transform = 'translateX(' + this.transform + '%)';
+
+    allBullets[id].classList.add('active');
 
   },
 
@@ -41,6 +58,15 @@ const slide = {
 
       allBullets.appendChild(bulletItem);
     }
+
+    let allCreatedBullets = document.querySelectorAll('.bullets__item');
+    allCreatedBullets.forEach(el => {
+      el.addEventListener('click', (el) => this.moveBullets(el));
+    });
+  },
+
+  bulletClick() {
+
   },
 
   start() {

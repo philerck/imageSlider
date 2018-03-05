@@ -41,10 +41,13 @@ main {
   .btn__left, .btn__right {
     width: 50px;
     height: 50px;
+    stroke: #ffff;
+    stroke-width: 2;
+    fill: none;
 
     &:hover {
       cursor: pointer;
-      transform: translateY(50%) scale(1.1);
+      stroke: var(--red);
     }
   }
 
@@ -79,6 +82,10 @@ main {
       &.active {
         fill: var(--red);
         fill-opacity: 1;
+      }
+
+      &:hover {
+        cursor: pointer;
       }
     }
   }

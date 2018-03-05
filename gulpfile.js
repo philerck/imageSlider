@@ -5,7 +5,7 @@ let rename = require('gulp-rename');
 let webserver = require('gulp-webserver');
 
 gulp.task('serve', ['webserver'], function () {
-  gulp.watch('./style.scss', ['css']);
+  gulp.watch('./slider.scss', ['css']);
 });
 
 gulp.task('css', function () {
