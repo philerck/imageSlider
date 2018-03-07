@@ -20,6 +20,13 @@
         max-width: 100%;
         height: auto;
       }
+
+      figcaption {
+        position: absolute;
+        top: 5%;
+        left: 2%;
+        display: block;
+      }
     }
   }
 
